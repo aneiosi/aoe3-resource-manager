@@ -1,85 +1,84 @@
-﻿<Window
-    x:Class="ResourceManagerUpdater.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:ResourceManagerUpdater"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="Resource Manager Updater"
-    Width="570"
-    SizeToContent="Height"
-    Loaded="Window_Loaded"
-    ResizeMode="NoResize"
-    WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d">
+﻿<Window x:Class="ResourceManagerUpdater.MainWindow"
+				xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+				xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+				xmlns:local="clr-namespace:ResourceManagerUpdater"
+				xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+				Title="Resource Manager Updater"
+				Width="570"
+				SizeToContent="Height"
+				Loaded="Window_Loaded"
+				ResizeMode="NoResize"
+				WindowStartupLocation="CenterScreen"
+				mc:Ignorable="d">
 
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid VerticalAlignment="Top">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-            <Image
-                Grid.Row="0"
-                Grid.Column="0"
-                Width="64"
-                Height="64"
-                Margin="0,0,20,0"
-                Source="pack://application:,,,/icon.ico" />
-            <TextBlock
-                Grid.Row="0"
-                Grid.Column="1"
-             
-                VerticalAlignment="Center"
-                FontFamily="/Fonts/#Trajan Pro 3"
-                TextAlignment="Left">
+	<Grid Margin="20">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Grid VerticalAlignment="Top">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="auto"/>
+				<ColumnDefinition Width="auto"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto"/>
+			</Grid.RowDefinitions>
+			<Image Grid.Row="0"
+						 Grid.Column="0"
+						 Width="64"
+						 Height="64"
+						 Margin="0,0,20,0"
+						 Source="pack://application:,,,/icon.ico"/>
+			<TextBlock Grid.Row="0"
+								 Grid.Column="1"
+								 VerticalAlignment="Center"
+								 FontFamily="/Fonts/#Trajan Pro 3"
+								 TextAlignment="Left">
 
-                <Run FontSize="22" Text="Resource Manager" />
+				<Run FontSize="22"
+						 Text="Resource Manager"/>
 
-                <LineBreak />
-                <Run FontSize="14" Text="{Binding CurrentVersion, Mode=OneWay, StringFormat='{}current version: {0}', FallbackValue='current version: unknown'}" />
+				<LineBreak/>
+				<Run FontSize="14"
+						 Text="{Binding CurrentVersion, Mode=OneWay, StringFormat='{}current version: {0}', FallbackValue='current version: unknown'}"/>
 
-                <LineBreak />
-                <Run FontSize="14" Text="available version:" />
-                <Hyperlink NavigateUri="{Binding AvailableVersionUrl, Mode=OneWay}" RequestNavigate="Hyperlink_RequestNavigate" Cursor="Hand">
-                    <Run FontSize="14" Text="{Binding AvailableVersion, TargetNullValue='unknown'}" />
-                </Hyperlink>
-            </TextBlock>
-        </Grid>
+				<LineBreak/>
+				<Run FontSize="14"
+						 Text="available version:"/>
+				<Hyperlink NavigateUri="{Binding AvailableVersionUrl, Mode=OneWay}"
+									 RequestNavigate="Hyperlink_RequestNavigate"
+									 Cursor="Hand">
+					<Run FontSize="14"
+							 Text="{Binding AvailableVersion, TargetNullValue='unknown'}"/>
+				</Hyperlink>
+			</TextBlock>
+		</Grid>
 
-        <TextBlock
-            Grid.Row="1"
-            Margin="0,20,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            FontFamily="/Fonts/#Trajan Pro 3"
-            FontSize="14"
-            Text="{Binding ProgressText}"
-            TextDecorations="{x:Null}" />
-        <TextBlock
-            Grid.Row="2"
-            HorizontalAlignment="left"
-            VerticalAlignment="Center"
-            FontFamily="/Fonts/#Trajan Pro 3"
-            FontSize="14"
-            Text="{Binding UpdateName}"
-            TextDecorations="{x:Null}" />
-        <ProgressBar x:Name="pbProgress"
-                     Grid.Row="3"
-            Width="520"
-            Height="32"
-            
-            Maximum="1"
-            Value="{Binding Progress}" />
-    </Grid>
+		<TextBlock Grid.Row="1"
+							 Margin="0,20,0,0"
+							 HorizontalAlignment="Left"
+							 VerticalAlignment="Center"
+							 FontFamily="/Fonts/#Trajan Pro 3"
+							 FontSize="14"
+							 Text="{Binding ProgressText}"
+							 TextDecorations="{x:Null}"/>
+		<TextBlock Grid.Row="2"
+							 HorizontalAlignment="left"
+							 VerticalAlignment="Center"
+							 FontFamily="/Fonts/#Trajan Pro 3"
+							 FontSize="14"
+							 Text="{Binding UpdateName}"
+							 TextDecorations="{x:Null}"/>
+		<ProgressBar x:Name="pbProgress"
+								 Grid.Row="3"
+								 Width="520"
+								 Height="32"
+								 Maximum="1"
+								 Value="{Binding Progress}"/>
+	</Grid>
 
 </Window>

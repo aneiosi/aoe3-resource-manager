@@ -1,33 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
-	      <Version>0.7.0</Version>
-    <Authors>VladTheJunior</Authors>
-    <Company>VladTheJunior</Company>
-    <Copyright>VladTheJunior</Copyright>
-    <BaseOutputPath>..\publish\</BaseOutputPath>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<ApplicationIcon>icon.ico</ApplicationIcon>
+		<Version>0.7.0</Version>
+		<Authors>VladTheJunior</Authors>
+		<Company>VladTheJunior</Company>
+		<Copyright>VladTheJunior</Copyright>
+		<BaseOutputPath>..\publish\</BaseOutputPath>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Fonts\Trajan.ttf" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Fonts\Trajan.ttf" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="K4os.Hash.xxHash" Version="1.0.8" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="K4os.Hash.xxHash" Version="1.0.8" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="icon.ico" />
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="icon.ico" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="Fonts\Trajan.ttf" />
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="Fonts\Trajan.ttf" />
+	</ItemGroup>
 
 </Project>

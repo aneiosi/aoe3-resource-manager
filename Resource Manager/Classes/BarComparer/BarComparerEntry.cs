@@ -2,10 +2,10 @@
 
 namespace Resource_Manager.Classes.BarComparer
 {
-    public class BarComparerEntry
-    {
-        public string type { get; set; } = "Unchanged";
-        public BarEntry entryOld { get; set; }
-        public BarEntry entryNew { get; set; }    
-    }
+	public class BarComparerEntry
+	{
+		public string type { get; set; } = "Unchanged";
+		public BarEntry entryOld { get; set; }
+		public BarEntry entryNew { get; set; }
+	}
 }
