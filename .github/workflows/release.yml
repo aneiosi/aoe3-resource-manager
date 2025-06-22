@@ -16,10 +16,10 @@ jobs:
     runs-on: windows-latest
 
     env:
-      Solution_Name: "Resource Manager.sln"                          # Replace with your solution name, i.e. MyWpfApp.sln.
+      Solution_Name: "Resource_Manager.sln"                          # Replace with your solution name, i.e. MyWpfApp.sln.
       #Test_Project_Path: your-test-project-path                   # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-      Wap_Project_Directory: "Resource Manager"                      # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
-      Wap_Project_Path: "Resource Manager/Resource Manager.csproj"   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
+      Wap_Project_Directory: "Resource_Manager"                      # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
+      Wap_Project_Path: "Resource_Manager/Resource_Manager.csproj"   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
 
     steps:
     - name: Checkout

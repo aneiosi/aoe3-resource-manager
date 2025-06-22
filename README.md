@@ -6,7 +6,7 @@
   </a>
 </p>
 
-# Resource Manager
+# Resource_Manager
 
 *Utility for viewing, comparing, creating and extracting files from Age of Empires III .BAR archive*
 

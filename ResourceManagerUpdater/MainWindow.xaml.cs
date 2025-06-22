@@ -16,7 +16,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-
 namespace ResourceManagerUpdater
 {
 	/// <summary>
@@ -137,7 +136,6 @@ namespace ResourceManagerUpdater
 			Process.Start(psi);
 		}
 
-
 		public Updates ServerUpdates { get; set; } = new Updates();
 		public Updates ClientUpdates { get; set; } = new Updates();
 		public ConcurrentQueue<Update> NewUpdates { get; set; } = new ConcurrentQueue<Update>();
@@ -175,7 +173,6 @@ namespace ResourceManagerUpdater
 			try
 			{
 
-
 				Directory.CreateDirectory(Path.GetDirectoryName(Path.Combine(AppContext.BaseDirectory, update.install_path)));
 
 				HttpResponseMessage response = await httpClient.GetAsync(update.url);
@@ -187,7 +184,6 @@ namespace ResourceManagerUpdater
 				{
 					//copy the content from response to filestream
 					await response.Content.CopyToAsync(fileStream);
-
 
 				}
 
@@ -201,7 +197,6 @@ namespace ResourceManagerUpdater
 
 			}
 			return true;
-
 
 		}
 
@@ -248,8 +243,6 @@ namespace ResourceManagerUpdater
 			return true;
 		}
 
-
-
 		private async void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			await Task.Delay(1);
@@ -260,7 +253,6 @@ namespace ResourceManagerUpdater
 							&& Path.GetFileName(path) != ".gitignore" && Path.GetFileName(path) != ".gitattributes" && Path.GetFileName(Path.GetDirectoryName(path)) != "Output"));
 
 			pbProgress.Maximum = updateFiles.Count();
-
 
 			maximum = updateFiles.Count();
 
@@ -285,7 +277,6 @@ namespace ResourceManagerUpdater
 			/*    */
 			ServerUpdates = await CheckUpdates();
 
-
 			if (ServerUpdates.files.Count > 0)
 			{
 				var differences = ServerUpdates.files.Where(s => !ClientUpdates.files.Any(c => c.install_path == s.install_path && c.md5 == s.md5));
@@ -299,7 +290,7 @@ namespace ResourceManagerUpdater
 			if (NewUpdates.Count > 0)
 			{
 				AvailableVersion = ServerUpdates.version;
-				foreach (var process in Process.GetProcessesByName("Resource Manager"))
+				foreach (var process in Process.GetProcessesByName("Resource_Manager"))
 				{
 					process.Kill();
 				}
@@ -335,7 +326,7 @@ namespace ResourceManagerUpdater
 				batFile.WriteLine("TASKKILL /F /IM \"{0}\" > NUL", file);
 				batFile.WriteLine("IF EXIST \"{0}\" MOVE \"{0}\" \"{1}\"", file + ".upd", file);
 				batFile.WriteLine("IF EXIST \"{0}\" MOVE \"{0}\" \"{1}\"", Path.GetFileNameWithoutExtension(file) + ".dll.upd", Path.GetFileNameWithoutExtension(file) + ".dll");
-				batFile.WriteLine("DEL \"%~f0\" & START \"\" /B \"{0}\"", "Resource Manager.exe");
+				batFile.WriteLine("DEL \"%~f0\" & START \"\" /B \"{0}\"", "Resource_Manager.exe");
 			}
 			ProcessStartInfo startInfo = new ProcessStartInfo("Update.bat");
 			startInfo.CreateNoWindow = true;
