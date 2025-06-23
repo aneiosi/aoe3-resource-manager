@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows;
-
-namespace Resource_Manager
+﻿namespace Resource_Manager
 {
 	/// <summary>
 	/// Interaction logic for ReleaseNotes.xaml

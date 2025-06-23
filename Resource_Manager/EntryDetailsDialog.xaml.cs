@@ -2,15 +2,6 @@
 using Resource_Manager.Classes.Bar;
 using Resource_Manager.Classes.DDT;
 using Resource_Manager.Classes.L33TZip;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace Resource_Manager
 {

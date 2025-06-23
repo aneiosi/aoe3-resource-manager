@@ -1,13 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.IO;
-using System.Runtime.CompilerServices;
-using System.Windows;
-using System.Windows.Forms;
-using System.IO;
-using System.Drawing;
-
-namespace Resource_Manager
+﻿namespace Resource_Manager
 {
 	/// <summary>
 	/// Interaction logic for ExportDDT.xaml

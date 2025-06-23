@@ -1,10 +1,4 @@
-﻿using K4os.Compression.LZ4;
-using System;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Resource_Manager.Classes.Alz4
+﻿namespace Resource_Manager.Classes.Alz4
 {
 	public static class Alz4Utils
 	{

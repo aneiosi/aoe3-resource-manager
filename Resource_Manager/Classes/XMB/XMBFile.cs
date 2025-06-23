@@ -1,90 +1,78 @@
 ﻿using Resource_Manager.Classes.Alz4;
 using Resource_Manager.Classes.L33TZip;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Xml;
 
 namespace Resource_Manager.Classes.XMB
 {
 	public class XMBFile
 	{
-		public class CustomEncodingStringWriter : StringWriter
+		public class CustomEncodingStringWriter(Encoding encoding) : StringWriter
 		{
-			public CustomEncodingStringWriter(Encoding encoding)
-			{
-				Encoding = encoding;
-			}
-
-			public override Encoding Encoding { get; }
+			public override Encoding Encoding { get; } = encoding;
 		}
 
-		public XmlDocument file { get; set; }
-		private char[] decompressedHeader { get; set; }
-		private uint dataLength { get; set; }
-		private char[] unknown1 { get; set; }
-		private uint unknown2 { get; set; }
-		private uint version { get; set; }
+		public XmlDocument File { get; set; }
+		private char[] DecompressedHeader { get; set; }
+		private uint DataLength { get; set; }
+		private char[] Unknown1 { get; set; }
+		private uint Unknown2 { get; set; }
+		private uint Version { get; set; }
 
-		private uint numElements { get; set; }
+		private uint NumElements { get; set; }
 
-		private uint numAttributes { get; set; }
+		private uint NumAttributes { get; set; }
 
 		#region Convert To XML
 
 		public static async Task<XMBFile> LoadXMBFile(Stream input)
 		{
-			XMBFile xmb = new XMBFile();
-
-			xmb.file = new XmlDocument();
+			XMBFile xmb = new()
+			{
+				File = new XmlDocument()
+			};
 
 			var reader = new BinaryReader(input, Encoding.Default, true);
 
-			reader.Read(xmb.decompressedHeader = new char[2], 0, 2);
-			if (new string(xmb.decompressedHeader) != "X1")
+			reader.Read(xmb.DecompressedHeader = new char[2], 0, 2);
+			if (new string(xmb.DecompressedHeader) != "X1")
 			{
 				throw new Exception("'X1' not detected - Not a valid XML file!");
 			}
 
-			xmb.dataLength = reader.ReadUInt32();
+			xmb.DataLength = reader.ReadUInt32();
 
-			reader.Read(xmb.unknown1 = new char[2], 0, 2);
-			if (new string(xmb.unknown1) != "XR")
+			reader.Read(xmb.Unknown1 = new char[2], 0, 2);
+			if (new string(xmb.Unknown1) != "XR")
 			{
 				throw new Exception("'XR' not detected - Not a valid XML file!");
 			}
 
-			xmb.unknown2 = reader.ReadUInt32();
-			xmb.version = reader.ReadUInt32();
+			xmb.Unknown2 = reader.ReadUInt32();
+			xmb.Version = reader.ReadUInt32();
 
-			if (xmb.unknown2 != 4)
+			if (xmb.Unknown2 != 4)
 			{
 				throw new Exception("'4' not detected - Not a valid XML file!");
 			}
 
-			if (xmb.version != 8)
+			if (xmb.Version != 8)
 			{
 				throw new Exception("Not a valid Age of Empires 3 XML file!");
 			}
 
-			xmb.numElements = reader.ReadUInt32();
+			xmb.NumElements = reader.ReadUInt32();
 
 			// Now that we know how many elements there are we can read through
 			// them and create them in our XMBFile object.
 			List<string> elements = new List<string>();
-			for (int i = 0; i < xmb.numElements; i++)
+			for (int i = 0; i < xmb.NumElements; i++)
 			{
 				int elementLength = reader.ReadInt32();
 				elements.Add(Encoding.Unicode.GetString(reader.ReadBytes(elementLength * 2)));
 			}
 			// Now do the same for attributes
-			xmb.numAttributes = reader.ReadUInt32();
+			xmb.NumAttributes = reader.ReadUInt32();
 			List<string> attributes = new List<string>();
-			for (int i = 0; i < xmb.numAttributes; i++)
+			for (int i = 0; i < xmb.NumAttributes; i++)
 			{
 				int attributeLength = reader.ReadInt32();
 				attributes.Add(Encoding.Unicode.GetString(reader.ReadBytes(attributeLength * 2)));
@@ -96,7 +84,7 @@ namespace Resource_Manager.Classes.XMB
 				XmlElement root = xmb.parseNode(ref reader, elements, attributes);
 				if (root != null)
 				{
-					xmb.file.AppendChild(root);
+					xmb.File.AppendChild(root);
 				}
 			});
 
@@ -121,7 +109,7 @@ namespace Resource_Manager.Classes.XMB
 			// Create a new XmlElement for this node
 
 
-			XmlElement node = file.CreateElement(elements[nameID]);
+			XmlElement node = File.CreateElement(elements[nameID]);
 			node.InnerText = innerText;
 			// Line number...
 			int lineNumber = reader.ReadInt32();
@@ -130,7 +118,7 @@ namespace Resource_Manager.Classes.XMB
 			for (int i = 0; i < numAttributes; i++)
 			{
 				int attrID = reader.ReadInt32();
-				XmlAttribute attribute = file.CreateAttribute(attributes[attrID]);
+				XmlAttribute attribute = File.CreateAttribute(attributes[attrID]);
 
 				int attributeLength = reader.ReadInt32();
 				attribute.InnerText = Encoding.Unicode.GetString(reader.ReadBytes(attributeLength * 2));
@@ -163,7 +151,7 @@ namespace Resource_Manager.Classes.XMB
 
 				textWriter.Formatting = Formatting.Indented;
 
-				xmb.file.Save(textWriter);
+				xmb.File.Save(textWriter);
 				return sw.ToString();
 			}
 		}

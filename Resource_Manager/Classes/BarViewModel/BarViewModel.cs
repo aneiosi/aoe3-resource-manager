@@ -365,7 +365,7 @@ namespace Archive_Unpacker.Classes.BarViewModel
 					using MemoryStream stream = new MemoryStream(data);
 					XMBFile xmb = await XMBFile.LoadXMBFile(stream);
 
-					xmb.file.Save(Path.ChangeExtension(ExtractPath, ""));
+					xmb.File.Save(Path.ChangeExtension(ExtractPath, ""));
 				}
 
 				// Additionaly convert xmb -> json
@@ -383,7 +383,7 @@ namespace Archive_Unpacker.Classes.BarViewModel
 
 					using MemoryStream stream = new(data);
 					XMBFile xmb = await XMBFile.LoadXMBFile(stream);
-					string json = JsonConvert.SerializeXmlNode(xmb.file, Newtonsoft.Json.Formatting.None, true);
+					string json = JsonConvert.SerializeXmlNode(xmb.File, Newtonsoft.Json.Formatting.None, true);
 					await File.WriteAllTextAsync(
 							Path.ChangeExtension(
 									Path.ChangeExtension(ExtractPath, null),

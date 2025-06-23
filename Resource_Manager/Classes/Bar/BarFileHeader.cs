@@ -1,11 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-
-namespace Resource_Manager.Classes.Bar
+﻿namespace Resource_Manager.Classes.Bar
 {
 	public class BarFileHeader
 	{

@@ -1,29 +1,7 @@
 ﻿using Archive_Unpacker.Classes.BarViewModel;
-using DiffPlex.DiffBuilder;
-using DiffPlex.DiffBuilder.Model;
-using ICSharpCode.AvalonEdit.Highlighting;
-using ICSharpCode.AvalonEdit.Highlighting.Xshd;
-using ICSharpCode.AvalonEdit.Search;
-using Microsoft.Win32;
 using Resource_Manager.Classes.Bar;
 using Resource_Manager.Classes.BarComparer;
 using Resource_Manager.Classes.Sort;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Xml;
 
 namespace Resource_Manager
 {

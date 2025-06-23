@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-
-namespace Resource_Manager.Classes.Bar
+﻿namespace Resource_Manager.Classes.Bar
 {
 	public class BarEntryLastWriteTime
 	{

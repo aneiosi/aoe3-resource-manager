@@ -1,14 +1,4 @@
-﻿
-using Resource_Manager.Classes.Alz4;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using Resource_Manager.Classes.Alz4;
 
 namespace Resource_Manager.Classes.Bar
 {

@@ -1,6 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Forms;
-using MessageBox = System.Windows.MessageBox;
+﻿using MessageBox = System.Windows.MessageBox;
 
 namespace Resource_Manager
 {

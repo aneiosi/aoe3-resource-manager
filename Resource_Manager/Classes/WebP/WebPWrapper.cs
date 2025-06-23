@@ -72,7 +72,10 @@ namespace WebPWrapper
 
 				return bmp;
 			}
-			catch (Exception) { throw; }
+			catch (Exception)
+			{
+				throw;
+			}
 			finally
 			{
 				//Unlock the pixels
